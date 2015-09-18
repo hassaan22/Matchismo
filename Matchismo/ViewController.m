@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *restartGame;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeOfGame;
+@property (weak, nonatomic) IBOutlet UILabel *lastMoveDescriptionLabel;
+@property (nonatomic) NSInteger numberOfCardsNeededPerMatch;
 
 @end
 
@@ -31,10 +33,12 @@
             NSLog(@"TWO CARD MATCHING GAME:");
             _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
                                                       usingDeck:[self createDeck]];
+            self.numberOfCardsNeededPerMatch = 2;
         } else {
             NSLog(@"THREE CARD MATCHING GAME:");
             _game = [[ThreeCardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
                                                            usingDeck:[self createDeck]];
+            self.numberOfCardsNeededPerMatch = 3;
         }
     }
     return _game;
@@ -48,6 +52,10 @@
 - (IBAction)touchCardButton:(UIButton *)sender {
     NSUInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chosenButtonIndex];
+    // Disabling the UISegmentControl
+    self.typeOfGame.userInteractionEnabled = NO;
+    [self.typeOfGame setTintColor:[UIColor grayColor]];
+    
     [self updateUI];
 }
 
@@ -63,6 +71,9 @@
 
 
 - (void)updateUI {
+    NSInteger numberOfCurrentChosenCards = 0;
+    NSInteger numberOfMatchedCards = 0;
+    
     for (UIButton *cardButton in self.cardButtons) {
         NSUInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
         Card *card = [self.game cardAtIndex:cardButtonIndex];
@@ -71,15 +82,34 @@
         [cardButton setBackgroundImage:[self backgroundImageForCard:card]
                               forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
-        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
-        
-        // Disabling the UISegmentControl
-        if (card.chosen) {
-            self.typeOfGame.userInteractionEnabled = NO;
-            [self.typeOfGame setTintColor:[UIColor grayColor]];
+        if (card.isChosen) numberOfCurrentChosenCards += 1;
+        if (card.isMatched) numberOfMatchedCards += 1;
+    }
+    
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
+    
+    NSString *description = @"Select a Card!";
+    NSMutableArray *chosenCardContents = [[NSMutableArray alloc] init];  // of Card Contents
+    for (Card *card in self.game.chosenCards) {
+        [chosenCardContents addObject:card.contents];
+    }
+    
+    if ([chosenCardContents count] == self.numberOfCardsNeededPerMatch) {
+        description = [chosenCardContents componentsJoinedByString:@" "];
+        if (self.game.previousScore > 0) {
+            description = [NSString stringWithFormat:@"Congrats! Matched %@ for %zd points", description, self.game.previousScore];
+        } else {
+            description = [NSString stringWithFormat:@"Silly, can't match %@. %zd points lost", description, -self.game.previousScore];
         }
     }
+    
+    
+    
+    
+    self.lastMoveDescriptionLabel.text = description;
+    
 }
+
 - (IBAction)typeOfGame:(id)sender {
     UISegmentedControl *segmentedControl = (UISegmentedControl *) sender;
     NSInteger currentGameType = segmentedControl.selectedSegmentIndex;
@@ -88,10 +118,10 @@
 
     if (currentGameType == 0) {
         // Two Card Matching Game
-        
+        //self.numberOfCardsNeededPerMatch = 2;
     } else {
         // Three Card Matching Game
-
+        //self.numberOfCardsNeededPerMatch = 3;
     }
     
 }

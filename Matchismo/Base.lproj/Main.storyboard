@@ -242,12 +242,6 @@
                                     <action selector="touchCardButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ESf-ob-Yy3"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8L3-Wb-P2P">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNo-BH-GLk">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -255,6 +249,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="119" y="484" width="165" height="30"/>
+                                </variation>
                                 <connections>
                                     <action selector="restartGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cm4-38-38b"/>
                                 </connections>
@@ -270,18 +267,38 @@
                                     <action selector="typeOfGame:" destination="vXZ-lx-hvc" eventType="valueChanged" id="RC1-l4-M6S"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Card!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzR-tu-8VG">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="550" width="360" height="42"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8L3-Wb-P2P">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0078431377187371254" green="0.81176477670669556" blue="0.97254908084869385" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="QzR-tu-8VG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="6C2-ME-uht"/>
                             <constraint firstItem="LNo-BH-GLk" firstAttribute="top" secondItem="nGt-eL-TeW" secondAttribute="bottom" constant="8" id="9gP-XB-k2O"/>
-                            <constraint firstItem="LNo-BH-GLk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="131" id="DDu-rx-x0G"/>
+                            <constraint firstItem="LNo-BH-GLk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="98" id="Bie-BN-fq8"/>
                             <constraint firstItem="8L3-Wb-P2P" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Dam-Of-pxY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LNo-BH-GLk" secondAttribute="trailing" constant="130" id="EEC-1w-hQs"/>
                             <constraint firstItem="8L3-Wb-P2P" firstAttribute="top" secondItem="LNo-BH-GLk" secondAttribute="bottom" constant="8" id="K2d-PW-96w"/>
                             <constraint firstItem="nGt-eL-TeW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="12" id="PZW-Rg-DKB"/>
                             <constraint firstItem="8L3-Wb-P2P" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="SXp-i3-buH"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="8L3-Wb-P2P" secondAttribute="bottom" constant="20" id="cr1-gJ-lJ7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LNo-BH-GLk" secondAttribute="trailing" constant="97" id="W3c-4m-W5D"/>
+                            <constraint firstItem="QzR-tu-8VG" firstAttribute="top" secondItem="8L3-Wb-P2P" secondAttribute="bottom" constant="7.5" id="aSJ-Fp-Zkg"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="8L3-Wb-P2P" secondAttribute="bottom" constant="20" id="cr1-gJ-lJ7">
+                                <variation key="widthClass=compact" constant="57.5"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="nGt-eL-TeW" secondAttribute="trailing" constant="12" id="urS-Uh-2eJ"/>
+                            <constraint firstItem="QzR-tu-8VG" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="x18-lG-ICq"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -300,20 +317,24 @@
                                 <exclude reference="ZIc-iH-xQh"/>
                                 <exclude reference="r8W-l1-cKu"/>
                                 <exclude reference="t1V-MN-RPt"/>
-                                <exclude reference="8L3-Wb-P2P"/>
                                 <exclude reference="LNo-BH-GLk"/>
                                 <exclude reference="nGt-eL-TeW"/>
+                                <exclude reference="QzR-tu-8VG"/>
+                                <exclude reference="8L3-Wb-P2P"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="cr1-gJ-lJ7"/>
+                                <exclude reference="PZW-Rg-DKB"/>
+                                <exclude reference="urS-Uh-2eJ"/>
+                                <exclude reference="9gP-XB-k2O"/>
+                                <exclude reference="Bie-BN-fq8"/>
+                                <exclude reference="W3c-4m-W5D"/>
                                 <exclude reference="Dam-Of-pxY"/>
                                 <exclude reference="K2d-PW-96w"/>
                                 <exclude reference="SXp-i3-buH"/>
-                                <exclude reference="9gP-XB-k2O"/>
-                                <exclude reference="DDu-rx-x0G"/>
-                                <exclude reference="EEC-1w-hQs"/>
-                                <exclude reference="PZW-Rg-DKB"/>
-                                <exclude reference="urS-Uh-2eJ"/>
+                                <exclude reference="6C2-ME-uht"/>
+                                <exclude reference="aSJ-Fp-Zkg"/>
+                                <exclude reference="x18-lG-ICq"/>
+                                <exclude reference="cr1-gJ-lJ7"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -333,24 +354,29 @@
                                 <include reference="ZIc-iH-xQh"/>
                                 <include reference="r8W-l1-cKu"/>
                                 <include reference="t1V-MN-RPt"/>
-                                <include reference="8L3-Wb-P2P"/>
                                 <include reference="LNo-BH-GLk"/>
                                 <include reference="nGt-eL-TeW"/>
+                                <include reference="QzR-tu-8VG"/>
+                                <include reference="8L3-Wb-P2P"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="cr1-gJ-lJ7"/>
+                                <include reference="PZW-Rg-DKB"/>
+                                <include reference="urS-Uh-2eJ"/>
+                                <include reference="9gP-XB-k2O"/>
+                                <include reference="Bie-BN-fq8"/>
+                                <include reference="W3c-4m-W5D"/>
                                 <include reference="Dam-Of-pxY"/>
                                 <include reference="K2d-PW-96w"/>
                                 <include reference="SXp-i3-buH"/>
-                                <include reference="9gP-XB-k2O"/>
-                                <include reference="DDu-rx-x0G"/>
-                                <include reference="EEC-1w-hQs"/>
-                                <include reference="PZW-Rg-DKB"/>
-                                <include reference="urS-Uh-2eJ"/>
+                                <include reference="6C2-ME-uht"/>
+                                <include reference="aSJ-Fp-Zkg"/>
+                                <include reference="x18-lG-ICq"/>
+                                <include reference="cr1-gJ-lJ7"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="lastMoveDescriptionLabel" destination="QzR-tu-8VG" id="fdJ-nG-9Gt"/>
                         <outlet property="restartGame" destination="LNo-BH-GLk" id="KqB-5Q-Ii9"/>
                         <outlet property="scoreLabel" destination="8L3-Wb-P2P" id="zhf-j4-Afl"/>
                         <outlet property="typeOfGame" destination="nGt-eL-TeW" id="crE-Mh-YMb"/>

@@ -56,7 +56,11 @@
     [self game];
     [self updateUI];
     
+    // Enabling the UISegmentControl
+    self.typeOfGame.userInteractionEnabled = YES;
+    [self.typeOfGame setTintColor:[UIColor blueColor]];
 }
+
 
 - (void)updateUI {
     for (UIButton *cardButton in self.cardButtons) {
@@ -68,6 +72,12 @@
                               forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
+        
+        // Disabling the UISegmentControl
+        if (card.chosen) {
+            self.typeOfGame.userInteractionEnabled = NO;
+            [self.typeOfGame setTintColor:[UIColor grayColor]];
+        }
     }
 }
 - (IBAction)typeOfGame:(id)sender {
@@ -75,12 +85,13 @@
     NSInteger currentGameType = segmentedControl.selectedSegmentIndex;
     // restart the game
     [self restartGame:nil];
+
     if (currentGameType == 0) {
         // Two Card Matching Game
         
     } else {
         // Three Card Matching Game
-        
+
     }
     
 }

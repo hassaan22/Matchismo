@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Card.h"
-#import "Deck.h"
 #import "CardMatchingGame.h"
 
 @interface ThreeCardMatchingGame : CardMatchingGame

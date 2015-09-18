@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
+#import "ThreeCardMatchingGame.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
@@ -24,8 +25,18 @@
 // I added a Git remote!
 
 - (CardMatchingGame *)game {
-    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
-                                                          usingDeck:[self createDeck]];
+    if (!_game) {
+        NSInteger selectedSegment = [self.typeOfGame selectedSegmentIndex];
+        if (selectedSegment == 0) {  // Two card matching
+            NSLog(@"TWO CARD MATCHING GAME:");
+            _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+                                                      usingDeck:[self createDeck]];
+        } else {
+            NSLog(@"THREE CARD MATCHING GAME:");
+            _game = [[ThreeCardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+                                                           usingDeck:[self createDeck]];
+        }
+    }
     return _game;
 }
 
@@ -75,6 +86,7 @@
 }
 
 - (NSString *)titleForCard:(Card *)card {
+    NSLog(@"Is chosen? %d", card.isChosen);
     return card.isChosen ? card.contents : @"";
 }
 

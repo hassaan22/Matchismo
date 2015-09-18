@@ -18,7 +18,23 @@
         if (otherCard.rank == self.rank) {
             score = 4;
         } else if ([otherCard.suit isEqualToString:self.suit]) {
-            score = 1;
+            score = 2;
+        }
+    } else if ([otherCards count] == 2) {
+        PlayingCard *firstCard = [otherCards firstObject];
+        PlayingCard *secondCard = [otherCards objectAtIndex:1];
+        if (firstCard.rank == self.rank && secondCard.rank == self.rank) {
+            // Three matching ranks
+            score = 10;
+        } else if (firstCard.suit == self.suit && secondCard.suit == self.suit) {
+            // Three matching suit
+            score = 6;
+        } else if (firstCard.rank == self.rank || secondCard.rank == self.rank || firstCard.rank == secondCard.rank) {
+            // Two matching ranks
+            score = 4;
+        } else if (firstCard.suit == self.suit || secondCard.suit == self.suit || firstCard.suit == secondCard.suit) {
+            // Two matching suits
+            score = 2;
         }
     }
     return score;

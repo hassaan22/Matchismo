@@ -75,6 +75,7 @@ static const int COST_TO_CHOOSE = 1;
             }
             self.score -= COST_TO_CHOOSE;
             card.chosen = YES;
+            NSLog(@"Am i chosen?: %d", card.chosen);
         }
         
     }
